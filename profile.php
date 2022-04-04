@@ -11,15 +11,15 @@
 <!------------->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="assets/img/logo.jpg" alt="LOGO" width="50" height="50" class="d-inline-block align-text-top"></a>
+        <a class="navbar-brand" href="#"><img src="assets/img/logo.jpg" alt="LOGO" width="50" height="50" class="d-inline-block align-text-top rounded"></a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse2">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse2">
                 <div class="navbar-nav">
-                    <a href="#" class="nav-item nav-link active">Home</a>
-                    <a href="#" class="nav-item nav-link">About</a>
-                    <a href="#" class="nav-item nav-link">Products</a>
+                    <a href="#" class="nav-item nav-link active">PROFILE</a>
+                    <a href="#" class="nav-item nav-link">CONTACTS</a>
+                    <a href="#" class="nav-item nav-link">ABOUT</a>
                 </div>
                 <form class="d-flex ms-auto">
                     <input type="text" class="form-control me-sm-2" placeholder="Search">
@@ -27,8 +27,9 @@
                 </form>
             </div>
         </div>        
-    </nav>
+</nav>
+<!------------->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/script.js"></script>
 </body>
 </html>
