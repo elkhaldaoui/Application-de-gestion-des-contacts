@@ -28,7 +28,7 @@
 			<input type="email" placeholder="Email" class="input" />
 			<input type="password" placeholder="Password" class="input" />
 			<a href="#" class="link">Forgot your password?</a>
-			<button class="btn">Sign In</button>
+			<a  href="profile.php" class="btn">Sign In</a>
 		</form>
 	</div>
 
