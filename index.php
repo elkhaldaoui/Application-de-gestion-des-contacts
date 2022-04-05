@@ -1,3 +1,42 @@
+<?php  
+    include_once('dbFunction.php');  
+       
+    $funObj = new dbFunction();  
+    if($_POST['login']){  
+        $emailid = $_POST['emailid'];  
+        $password = $_POST['password'];  
+        $user = $funObj->Login($emailid, $password);  
+        if ($user) {  
+            // Registration Success  
+           header("location:profile.php");  
+        } else {  
+            // Registration Failed  
+            echo "<script>alert('Emailid / Password Not Match')</script>";  
+        }  
+    }  
+    if($_POST['register']){  
+        $username = $_POST['username'];  
+        $emailid = $_POST['emailid'];  
+        $password = $_POST['password'];  
+        $confirmPassword = $_POST['confirm_password'];  
+        if($password == $confirmPassword){  
+            $email = $funObj->isUserExist($emailid);  
+            if(!$email){  
+                $register = $funObj->UserRegister($username, $emailid, $password);  
+                if($register){  
+                     echo "<script>alert('Registration Successful')</script>";  
+                }else{  
+                    echo "<script>alert('Registration Not Successful')</script>";  
+                }  
+            } else {  
+                echo "<script>alert('Email Already Exist')</script>";  
+            }  
+        } else {  
+            echo "<script>alert('Password Not Match')</script>";  
+          
+        }  
+    }  
+?>   
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,23 +51,24 @@
 <div class="container right-panel-active">
 	<!-- Sign Up -->
 	<div class="container__form container--signup">
-		<form action="#" class="form" id="form1">
+		<form action="#" class="form" id="form1" name="login" method="post">
 			<h2 class="form__title">Sign Up</h2>
-			<input type="text" placeholder="User" class="input" />
-			<input type="email" placeholder="Email" class="input" />
-			<input type="password" placeholder="Password" class="input" />
-			<button class="btn">Sign Up</button>
+			<input type="text" placeholder="User" class="input" id="usernamesignup" name="username" />
+			<input type="email" placeholder="Email" class="input" id="emailsignup" name="emailid" />
+			<input type="password" placeholder="Password" class="input" id="passwordsignup" name="password" />
+            <input type="password" placeholder="confirm your Password" class="input" id="passwordsignup_confirm" name="confirm_password" />
+			<button class="btn" type="submit" name="register">Sign Up</button>
 		</form>
 	</div>
 
 	<!-- Sign In -->
 	<div class="container__form container--signin">
-		<form action="#" class="form" id="form2">
+		<form action="#" class="form" id="form2" name="login" method="post">
 			<h2 class="form__title">Sign In</h2>
-			<input type="email" placeholder="Email" class="input" />
-			<input type="password" placeholder="Password" class="input" />
+			<input type="email" placeholder="Email" class="input" id="emailsignup" name="emailid" />
+			<input type="password" placeholder="Password" class="input" id="password" name="password" />
 			<a href="#" class="link">Forgot your password?</a>
-			<a  href="profile.php" class="btn">Sign In</a>
+			<a  href="#" class="btn" type="submit" name="login">Sign In</a>
 		</form>
 	</div>
 
