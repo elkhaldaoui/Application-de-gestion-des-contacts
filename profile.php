@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="assets/css/profile.css">
     <title>Gestion Contacts</title>
 </head>
+<style>
+    footer{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #333;
+        color: white;
+        text-align: center;
+    }
+    #search{
+        margin-left: 75%;
+    }
+</style>
 <body class="d-flex flex-column">
 <!------navbar------->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -22,7 +36,7 @@
                     <a href="#" class="nav-item nav-link">CONTACTS</a>
                     <a href="#" class="nav-item nav-link">ABOUT</a>
                 </div>
-                <form class="d-flex ms-auto">
+                <form id="search"  class="d-flex ms-auto">
                     <input type="text" class="form-control me-sm-2" placeholder="Search">
                     <button type="submit" class="btn btn-outline-light">Search</button>
                 </form>
