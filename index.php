@@ -1,3 +1,12 @@
+<?php
+	//start session
+	session_start();
+ 
+	//redirect if logged in
+	if(isset($_SESSION['user'])){
+		header('location:profile.php');
+	}
+?>
 <!doctype html>
 <html lang="en">
   <head>

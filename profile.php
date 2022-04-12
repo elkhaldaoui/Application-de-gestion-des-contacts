@@ -1,3 +1,19 @@
+<?php
+session_start();
+//return to login if not logged in
+if (!isset($_SESSION['user']) ||(trim ($_SESSION['user']) == '')){
+	header('location:index.php');
+}
+ 
+include_once('User.php');
+ 
+$user = new User();
+ 
+//fetch user data
+$sql = "SELECT * FROM users WHERE id = '".$_SESSION['user']."'";
+$row = $user->details($sql);
+ 
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -41,7 +57,7 @@
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">First Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
+                    <div class="col-md-6"><label class="labels">First Name</label><input type="text" class="form-control" placeholder="<?php echo $row['fname']; ?>" value=""></div>
                     <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" value="" placeholder="last name"></div>
                 </div>
                 <div class="row mt-3">
