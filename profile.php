@@ -12,7 +12,7 @@
 <!------navbar------->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="assets/img/logo.jpg" alt="LOGO" width="50" height="50" class="d-inline-block align-text-top rounded"></a>
+        <a class="navbar-brand" href="profile.php"><img src="img/logo.jpg" alt="LOGO" width="50" height="50" class="d-inline-block align-text-top rounded"></a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"      aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -20,7 +20,7 @@
                 <div class="navbar-nav">
                     <a href="profile.php" class="nav-item nav-link active">PROFILE</a>
                     <a href="contacts.php" class="nav-item nav-link">CONTACTS</a>
-                    <a href="#" class="nav-item nav-link">ABOUT</a>
+                    <a href="index.php" class="nav-item nav-link ">LOG-OUT</a>
                 </div>
                 <form id="search"  class="d-flex ms-auto">
                     <input type="text" class="form-control me-sm-2" placeholder="Search">

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="css/index.css">
     <title>Gestion Contacts</title>
 </head>
 <body>
@@ -29,7 +29,7 @@
 			<input type="email" placeholder="Email" class="input" id="emailsignup" name="emailid" />
 			<input type="password" placeholder="Password" class="input" id="password" name="password" />
 			<a href="#" class="link">Forgot your password?</a>
-			<a  href="#" class="btn" type="submit" name="login">Sign In</a>
+			<a  href="profile.php" class="btn" type="submit" name="login">Sign In</a>
 		</form>
 	</div>
 
@@ -45,6 +45,6 @@
 		</div>
 	</div>
 </div> 
-<script src="assets/js/index.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>
