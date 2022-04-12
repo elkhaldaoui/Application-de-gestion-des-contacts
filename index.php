@@ -14,10 +14,12 @@
 	<div class="container__form container--signup">
 		<form action="#" class="form" id="form1" name="login" method="post">
 			<h2 class="form__title">Sign Up</h2>
-			<input type="text" placeholder="User" class="input" id="usernamesignup" name="username" />
-			<input type="email" placeholder="Email" class="input" id="emailsignup" name="emailid" />
-			<input type="password" placeholder="Password" class="input" id="passwordsignup" name="password" />
-            <input type="password" placeholder="confirm your Password" class="input" id="passwordsignup_confirm" name="confirm_password" />
+			<input type="text" placeholder="First Name" class="input" id="fname" name="fname" />
+			<input type="text" placeholder="Last Name" class="input" id="lname" name="lname" />
+			<input type="email" placeholder="Email" class="input" id="email" name="email" />
+			<input type="password" placeholder="Password" class="input" id="password" name="password" />
+            <input type="text" placeholder="Phone Number" class="input" id="phone" name="phone" value="+212" />
+			<input type="date" placeholder="Date" class="input" id="date" name="date" />
 			<button class="btn" type="submit" name="register">Sign Up</button>
 		</form>
 	</div>
