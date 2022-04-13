@@ -8,9 +8,9 @@ class User extends DbConnection{
         parent::__construct();
     }
  
-    public function check_login($username, $password){
+    public function check_login($username, $email, $password){
  
-        $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+        $sql = "SELECT * FROM users WHERE username = '$username' AND email = '$email' AND password = '$password'" ;
         $query = $this->connection->query($sql);
  
         if($query->num_rows > 0){

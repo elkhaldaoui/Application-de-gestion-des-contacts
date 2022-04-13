@@ -4,7 +4,7 @@ class DbConnection{
     private $host = 'localhost';
     private $username = 'root';
     private $password = '';
-    private $database = 'test';
+    private $database = 'oop';
  
     protected $connection;
  

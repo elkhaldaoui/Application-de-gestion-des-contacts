@@ -8,9 +8,10 @@ $user = new User();
  
 if(isset($_POST['login'])){
 	$username = $user->escape_string($_POST['username']);
+	$email = $user->escape_string($_POST['email']);
 	$password = $user->escape_string($_POST['password']);
  
-	$auth = $user->check_login($username, $password);
+	$auth = $user->check_login($username, $email, $password);
  
 	if(!$auth){
 		$_SESSION['message'] = 'Invalid username or password';
@@ -18,7 +19,7 @@ if(isset($_POST['login'])){
 	}
 	else{
 		$_SESSION['user'] = $auth;
-		header('location:home.php');
+		header('location:profile.php');
 	}
 }
 else{

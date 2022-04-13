@@ -19,28 +19,27 @@
 <body>
 <!------------->
 <div class="container right-panel-active">
+
 	<!-- Sign Up -->
-	<div class="container__form container--signup">
+	<!-- <div class="container__form container--signup">
 		<form action="#" class="form" id="form1" name="login" method="post">
 			<h2 class="form__title">Sign Up</h2>
-			<input type="text" placeholder="First Name" class="input" id="fname" name="fname" />
-			<input type="text" placeholder="Last Name" class="input" id="lname" name="lname" />
+			<input type="text" placeholder="User Name" class="input" id="username" name="username" />
 			<input type="email" placeholder="Email" class="input" id="email" name="email" />
 			<input type="password" placeholder="Password" class="input" id="password" name="password" />
-            <input type="text" placeholder="Phone Number" class="input" id="phone" name="phone" value="+212" />
-			<input type="date" placeholder="Date" class="input" id="date" name="date" />
 			<button class="btn" type="submit" name="register">Sign Up</button>
 		</form>
-	</div>
+	</div> -->
 
 	<!-- Sign In -->
 	<div class="container__form container--signin">
-		<form action="#" class="form" id="form2" name="login" method="post">
+		<form action="login.php" class="form" id="form2" name="login" method="post">
 			<h2 class="form__title">Sign In</h2>
-			<input type="email" placeholder="Email" class="input" id="emailsignup" name="emailid" />
+			<input type="text" placeholder="User Name" class="input" id="username" name="username" />
+			<input type="email" placeholder="Email" class="input" id="email" name="email" />
 			<input type="password" placeholder="Password" class="input" id="password" name="password" />
 			<a href="#" class="link">Forgot your password?</a>
-			<a  href="profile.php" class="btn" type="submit" name="login">Sign In</a>
+			<button class="btn" type="submit" name="login">Sign In</button>
 		</form>
 	</div>
 
@@ -55,7 +54,22 @@
 			</div>
 		</div>
 	</div>
-</div> 
+</div>
+
+<?php
+
+if(isset($_SESSION['message'])){
+?>
+
+<div class="alert alert-info text-center">
+<?php echo $_SESSION['message']; ?>
+</div>
+
+<?php
+ 
+unset($_SESSION['message']);
+}
+?> 
 <script src="js/index.js"></script>
 </body>
 </html>
