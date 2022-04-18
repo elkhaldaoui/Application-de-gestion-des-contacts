@@ -1,38 +1,34 @@
 <?php
-include_once('DbConnection.php');
- 
-class User extends DbConnection{
- 
-    public function __construct(){
- 
-        parent::__construct();
-    }
- 
-    public function check_login($username, $email, $password){
- 
-        $sql = "SELECT * FROM users WHERE username = '$username' AND email = '$email' AND password = '$password'" ;
-        $query = $this->connection->query($sql);
- 
-        if($query->num_rows > 0){
-            $row = $query->fetch_array();
-            return $row['id'];
+require_once ('DbConnection.php');
+    class User extends Database{
+        public $id;
+        public $usename;
+        public $password;
+        public $email;
+        public $photo;
+        public $registration_date;
+        
+        public function register(){
+            static::query("INSERT INTO users(username,email,password,registration_date)".
+            " VALUES('$this->username','$this->email','$this->password','$this->registration_date')");
+
         }
-        else{
-            return false;
+
+        public static function login($email, $password){
+            $sql = "SELECT * FROM users WHERE email = '$email' AND password = '".md5($password)."'";
+            $res = static::query($sql);
+            return $res;
+
         }
-    }
+
+        public static function get($email){
  
-    public function details($sql){
- 
-        $query = $this->connection->query($sql);
- 
-        $row = $query->fetch_array();
- 
-        return $row;       
-    }
- 
-    public function escape_string($value){
- 
-        return $this->connection->real_escape_string($value);
-    }
-}
+        }
+
+        public static function searchEmail($email)
+        {
+            $res = static::query("SELECT * FROM users WHERE email = '$email'");
+
+            return $res;
+        }
+    }  
