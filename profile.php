@@ -5,7 +5,10 @@ include_once('User.php');
  
 $user = new User();
   
-
+if(!$_SESSION['login']){
+    header("location:index.php");
+    die;
+}
 ?>
 <!doctype html>
 <html lang="en">
