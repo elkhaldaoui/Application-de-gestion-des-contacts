@@ -1,78 +1,83 @@
-<?php
-	//start session
-	session_start();
- 
-	//redirect if logged in
-	if(isset($_SESSION['user'])){
-		header('location:profile.php');
-	}
-	?>
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="css/index.css">
-		<title>Gestion Contacts</title>
+  <head>
+  	<title>Sign In</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
+
 	</head>
-	<body>
-<!------------->
-<div class="container right-panel-active">
-
-	<!-- Sign Up -->
-	<!-- <div class="container__form container--signup">
-		<form action="regester.php" class="form" id="form1" name="register" method="post">
-			<h2 class="form__title">Sign Up</h2>
-			<input form="form1" type="text" placeholder="User Name" class="input" id="username" name="username" />
-			<input form="form1" type="email" placeholder="Email" class="input" id="email" name="email" />
-			<input  form="form1"type="password" placeholder="Password" class="input" id="password" name="password" />
-			<input  form="form1"type="date" placeholder="Date" class="input" id="date" name="date" />
-			<button form="form1" class="btn" type="submit" name="register">Sign Up</button>
-			</form>
-		</div> -->
-
-	<!-- Sign In -->
-	<div class="container__form container--signin">
-		<form action="login.php" class="form" id="form2" name="login" method="post">
-			<h2 class="form__title">Sign In</h2>
-			<input form="form2" type="text" placeholder="User Name" class="input" id="username" name="username" />
-			<input form="form2" type="email" placeholder="Email" class="input" id="email" name="email" />
-			<input form="form2" type="password" placeholder="Password" class="input" id="password" name="password" />
-			<a href="#" class="link">Forgot your password?</a>
-			<button form="form2" class="btn" type="submit" name="login">Sign In</button>
-			</form>
-	</div>
-
-	<!-- Overlay -->
-	<!-- <div class="container__overlay">
-		<div class="overlay">
-			<div class="overlay__panel overlay--left">
-				<button class="btn" id="signIn">Sign In</button>
+	<body class="img js-fullheight" style="background-image: url(images/bg.jpg);">
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">GESTION CONTACTS</h2>
+				</div>
 			</div>
-			<div class="overlay__panel overlay--right">
-				<button class="btn" id="signUp">Sign Up</button>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+		      	<h3 class="mb-4 text-center">Have an account?</h3>
+
+		      	<form action="#" class="signin-form" method="POST" >
+		      		<div class="form-group">
+		      			<input type="text" name="email" class="form-control" placeholder="Email" required>
+		      		</div>
+	            <div class="form-group">
+	              <input id="password-field" name="password" type="password" class="form-control" placeholder="Password" required>
+	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+	            </div>
+	            <div class="form-group">
+	            	<button type="submit" name="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+					<br><br>
+					<a href="register.php" class="form-control btn btn-primary submit px-3">Create an Account!</a>
+	            </div>
+	            <div class="form-group d-md-flex">
+	            	<div class="w-50">
+		            	<label class="checkbox-wrap checkbox-primary">Remember Me
+									  <input type="checkbox" checked>
+									  <span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="w-50 text-md-right">
+									<a href="#" style="color: #fff">Forgot Password</a>
+								</div>
+	            </div>
+	          </form>
+
+	          <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+	          <div class="social d-flex text-center">
+	          	<a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
+	          	<a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>
+	          </div>
+		      </div>
+				</div>
 			</div>
 		</div>
-	</div> -->
-</div>
+	</section>
 
-<?php
-if(isset($_SESSION['message'])){
-?>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
 
-<div class="alert alert-info text-center">
-
-<?php
- echo $_SESSION['message']; 
- ?>
-</div>
-
-<?php
- 
- unset($_SESSION['message']);
-}
-?> 
-<script src="js/index.js"></script>
 </body>
 </html>
+
+<?php
+	if(isset($_POST['submit'])){  
+		require_once 'User.php';
+        $user = new User();
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+		User::login($email, $password);
+    }
+
+?>
+

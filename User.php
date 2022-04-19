@@ -1,5 +1,5 @@
 <?php
-require_once ('DbConnection.php');
+require_once ('Database.php');
     class User extends Database{
         public $id;
         public $usename;
@@ -11,14 +11,20 @@ require_once ('DbConnection.php');
         public function register(){
             static::query("INSERT INTO users(username,email,password,registration_date)".
             " VALUES('$this->username','$this->email','$this->password','$this->registration_date')");
+            header("Location: index.php");
 
         }
 
-        public static function login($email, $password){
-            $sql = "SELECT * FROM users WHERE email = '$email' AND password = '".md5($password)."'";
+        public static function login($emaillg, $passwordlg){
+            $sql = "SELECT * FROM users WHERE email = '$emaillg' AND password = '".md5($passwordlg)."'";
             $res = static::query($sql);
-            return $res;
-
+            if($res){
+                // create session
+                header("Location:profile.php");
+                exit();
+            }else{
+                echo "Wrong email or password"; 
+            }
         }
 
         public static function get($email){
