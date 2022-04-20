@@ -8,11 +8,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
-    <link rel="stylesheet" href="css/contacts.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <title>Gestion Contacts</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/webfonts/fa-brands-400.ttf">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <title>CONTACTS</title>
 <script>
 $(document).ready(function(){
 	// Activate tooltip
@@ -41,25 +45,32 @@ $(document).ready(function(){
 </head>
 <body class="d-flex flex-column">
 <!------navbar------->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-        <a class="navbar-brand" href="profile.php"><img src="img/logo.jpg" alt="LOGO" width="50" height="50" class="d-inline-block align-text-top rounded"></a>
-        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"      aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse2">
-                <div class="navbar-nav">
-                    <a href="profile.php" class="nav-item nav-link active">PROFILE</a>
-                    <a href="contacts.php" class="nav-item nav-link">CONTACTS</a>
-                    <a href="index.php" class="nav-item nav-link">LOG-OUT</a>
-                </div>
-                <form id="search"  class="d-flex ms-auto">
-                    <input type="text" class="form-control me-sm-2" placeholder="Search">
-                    <button type="submit" class="btn btn-outline-light">Search</button>
-                </form>
-            </div>
-        </div>        
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CONTACTS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="profile.php">PROFILE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contacts.php">CONTACTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout.php">Log-Out</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
 </nav>
+<!------navbar------->
 <!-- content -->
 <div class="container-xl">
 	<div class="table-responsive">
@@ -140,7 +151,7 @@ $(document).ready(function(){
 		<div class="modal-content">
 			<form>
 				<div class="modal-header">						
-					<h4 class="modal-title">Add Employee</h4>
+					<h4 class="modal-title">Add Contact</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
