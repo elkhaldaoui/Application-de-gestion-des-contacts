@@ -108,38 +108,57 @@
   </div>
 </section>
 <!-- The Modal -->
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-bs-toggle="modal" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">PROFILE</h4>
+        <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
 
-<!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Edite Admin</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <div class="md-form mb-5">
+          <i class="fas fa-user prefix grey-text"></i>
+          <input type="text" id="orangeForm-name" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-name">User Name</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <i class="fas fa-envelope prefix grey-text"></i>
+          <input type="email" id="orangeForm-email" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-email">Your Email</label>
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+          <input type="password" id="orangeForm-password" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-password">Your Password</label>
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fas fa-phone prefix grey-text"></i>
+          <input type="text" id="orangeForm-phone" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-phone">Your Phone</label>
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fas fa-blind prefix grey-text"></i>
+          <input type="text" id="orangeForm-adresse" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-adresse">Your Adresse</label>
+        </div>
+
       </div>
-<!-- Modal body -->
-      <div class="mb-3">
-       <label for="exampleInputEmail1" class="form-label">Email address</label>
-       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-       <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-      </div>
-      <div class="mb-3">
-       <label for="exampleInputPassword1" class="form-label">Password</label>
-       <input type="password" class="form-control" id="exampleInputPassword1">
-      <div class="col-auto">
-       <span id="passwordHelpInline" class="form-text">
-       Must be 8-20 characters long.
-       </span>
-      </div>
-      </div>
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Edite</button>
+
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-primary">Save Changes</button>
       </div>
     </div>
   </div>
 </div>
+
 <!-- Footer -->
 <!-- Footer -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
