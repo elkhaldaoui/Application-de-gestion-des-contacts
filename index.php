@@ -63,11 +63,12 @@
 
 <?php
 	if(isset($_POST['submit'])){  
-		require_once 'User.php';
+		require_once 'classes/User.php';
         $user = new User();
         $email = $_POST['email'];
         $password = $_POST['password'];
 		User::login($email, $password);
+		header("Location: profile.php");
     }
 
 ?>

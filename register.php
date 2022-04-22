@@ -1,13 +1,5 @@
 <?php
-    require_once 'User.php';
-    $dah = User::login('user@gmail.com', 'AZERTY');
-    print_r($dah);
-    if(isset($_GET['email']))
-    {
-        echo (User::searchEmail($_GET['email'])) ? 'Email Address Unavailable' : 'Email Address Available';
-        exit();
-    }
-
+    require_once 'classes/User.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -56,11 +48,6 @@
 		</div>
 	</section>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
-
 </body>
 </html>
 
@@ -74,5 +61,6 @@
         $user->password = md5($_POST['password']);
         $user->registration_date = date('Y-m-d H:i:s');
         $user->register();  
+		header("Location: index.php");
     }
 ?>

@@ -11,8 +11,6 @@ require_once ('Database.php');
         public function register(){
             static::query("INSERT INTO users(username,email,password,registration_date)".
             " VALUES('$this->username','$this->email','$this->password','$this->registration_date')");
-            header("Location: index.php");
-
         }
 
         public static function login($emaillg, $passwordlg){
@@ -27,7 +25,6 @@ require_once ('Database.php');
                 $_SESSION['email'] = $res[0]['email'];
                 $_SESSION['password'] = $res[0]['password'];
                 $_SESSION['registration_date'] = $res[0]['registration_date'];
-                header("Location: profile.php");
                 
             }else{
                 echo "Wrong email or password"; 
