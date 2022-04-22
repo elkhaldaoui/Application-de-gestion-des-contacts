@@ -1,6 +1,6 @@
 <?php
-	session_start();
-	session_destroy();
- 
+    include_once ('User.php');
+	$logout=new User();
+	$logout->logout();
 	header('location:index.php');
 ?>

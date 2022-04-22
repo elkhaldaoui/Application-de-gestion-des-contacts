@@ -14,7 +14,7 @@ class Database {
         $db = self::connection();
         $result=$db->query($sql);
         if(stripos($sql,'select')!==false){
-            return $result->fetch();
+            return $result->fetchAll(PDO::FETCH_ASSOC);
         }
     }
 

@@ -20,21 +20,25 @@ require_once ('Database.php');
             $res = static::query($sql);
             if($res){
                 // create session
-                header("Location:profile.php");
-                exit();
+                session_start();
+                $_SESSION['login'] = true;
+                $_SESSION['user_id'] = $res[0]['id'];
+                $_SESSION['username'] = $res[0]['username'];
+                $_SESSION['email'] = $res[0]['email'];
+                $_SESSION['password'] = $res[0]['password'];
+                $_SESSION['registration_date'] = $res[0]['registration_date'];
+                header("Location: profile.php");
+                
             }else{
                 echo "Wrong email or password"; 
             }
         }
 
-        public static function get($email){
- 
-        }
+        public function logout(){
+            session_start();
+            session_destroy();
+            header("Location:index.php");
+        }   
 
-        public static function searchEmail($email)
-        {
-            $res = static::query("SELECT * FROM users WHERE email = '$email'");
-
-            return $res;
-        }
+        
     }  

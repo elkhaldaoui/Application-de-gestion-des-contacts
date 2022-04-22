@@ -1,3 +1,13 @@
+<?php
+
+  session_start();
+  if (!isset($_SESSION['login'])) {
+    header("Location:index.php");
+  }
+
+
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -62,8 +72,8 @@
                 class="img-fluid my-5"
                 style="width: 80px ; border-radius: 50%;"
               />
-              <h5>Marie Horwitz</h5>
-              <p>ADMIN</p>
+              <h5><?php echo $_SESSION['username'] ?></h5>
+              <p>User</p>
               <a href="#" type="button" class="far fa-edit mb-5" data-bs-toggle="modal" data-bs-target="#myModal"></a>
             </div>
             <div class="col-md-8">
@@ -73,7 +83,7 @@
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
                     <h6>Email</h6>
-                    <p class="text-muted">info@example.com</p>
+                    <p class="text-muted"><?php echo $_SESSION['email'] ?></p>
                   </div>
                   <div class="col-6 mb-3">
                     <h6>Phone</h6>
@@ -83,11 +93,11 @@
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
                     <h6>Username</h6>
-                    <p class="text-muted">Lorem ipsum</p>
+                    <p class="text-muted"><?php echo $_SESSION['username'] ?></p>
                   </div>
                   <div class="col-6 mb-3">
                     <h6>Date</h6>
-                    <p class="text-muted">Dolor sit amet</p>
+                    <p class="text-muted"><?php echo $_SESSION['registration_date'] ?></p>
                   </div>
                   <div class="col-6 mb-3">
                     <h6>Adress</h6>
@@ -107,58 +117,6 @@
     </div>
   </div>
 </section>
-<!-- The Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-bs-toggle="modal" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">PROFILE</h4>
-        <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-
-        <div class="md-form mb-5">
-          <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-name" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-name">User Name</label>
-        </div>
-
-        <div class="md-form mb-5">
-          <i class="fas fa-envelope prefix grey-text"></i>
-          <input type="email" id="orangeForm-email" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-email">Your Email</label>
-        </div>
-
-        <div class="md-form mb-4">
-          <i class="fas fa-lock prefix grey-text"></i>
-          <input type="password" id="orangeForm-password" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-password">Your Password</label>
-        </div>
-
-        <div class="md-form mb-4">
-          <i class="fas fa-phone prefix grey-text"></i>
-          <input type="text" id="orangeForm-phone" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-phone">Your Phone</label>
-        </div>
-
-        <div class="md-form mb-4">
-          <i class="fas fa-blind prefix grey-text"></i>
-          <input type="text" id="orangeForm-adresse" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-adresse">Your Adresse</label>
-        </div>
-
-      </div>
-
-      <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-primary">Save Changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Footer -->
 <!-- Footer -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
