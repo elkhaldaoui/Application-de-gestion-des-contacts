@@ -69,6 +69,7 @@
         $password = $_POST['password'];
 		User::login($email, $password);
 		header("Location: profile.php");
+		
     }
 
 ?>

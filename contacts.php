@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  if (!isset($_SESSION['login'])) {
+    header("Location:index.php");
+  }
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -123,22 +129,7 @@
 		</div>
 	</div>
 </div>
-<?php
-	if(isset($_POST['add'])){  
-		require_once 'classes/Contact.php';
-		$username = $_POST['username'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-		$adresse = $_POST['adresse'];
-		$contact = new Contact();
-		$contact->username = $username;
-		$contact->email = $email;
-		$contact->phone = $phone;
-		$contact->adresse = $adresse;
-		$contact->addContact();
-    }
 
-?>
 <!-- Edit Modal HTML -->
 <div id="editContactModal" class="modal fade">
 	<div class="modal-dialog">
@@ -151,15 +142,15 @@
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>Name</label>
-						<input type="text" class="form-control" required>
+						<input type="text" value="<?php echo $_SESSION['username'] ?>" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Email</label>
-						<input type="email" class="form-control" required>
+						<input type="email" value="<?php echo $_SESSION['email'] ?>" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Address</label>
-						<textarea class="form-control" required></textarea>
+						<text type="text" value="<?php echo $_SESSION['adresse'] ?>" class="form-control" required></text>
 					</div>
 					<div class="form-group">
 						<label>Phone</label>
