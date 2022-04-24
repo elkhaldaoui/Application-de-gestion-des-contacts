@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'classes/Contact.php';
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -12,12 +13,12 @@ require_once 'classes/Contact.php';
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="css/contacts.css">
   <title>CONTACTS</title>
 </head>
@@ -63,10 +64,10 @@ require_once 'classes/Contact.php';
 				</div>
 			</div>
 <?php
-$id_user = $_SESSION['user_id'];
-$contact = new Contact();
-$result = $contact->getAllContacts($id_user);
-// print_r($result);
+    $id_user = $_SESSION['user_id'];
+	$contact = new Contact();
+	$result = $contact->getAllContacts($id_user);
+	// print_r($result);
 
 ?>
 			<table class="table table-striped table-hover">
@@ -81,9 +82,10 @@ $result = $contact->getAllContacts($id_user);
 						<th>Actions</th>
 					</tr>
 				</thead>
-				<?php
-				foreach ($result as $name ){
-				?>
+<?php
+	foreach ($result as $name )
+	{
+?>
 				<tbody>
 					<tr>
 						<td>
@@ -98,9 +100,9 @@ $result = $contact->getAllContacts($id_user);
 						</td>
 					</tr>
 				</tbody>
-				<?php
-				}
-				?>
+<?php
+	}
+?>
 			</table>
 		</div>
 	</div>        
@@ -165,37 +167,55 @@ $result = $contact->getAllContacts($id_user);
 <div id="editContactModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form>
+			<form method='POST'>
 				<div class="modal-header">						
 					<h4 class="modal-title">Edit Contact</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
 					<div class="form-group">
-						<label>Name</label>
-						<input type="text" class="form-control" required>
+						<label>User Name</label>
+						<input name="username" type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Email</label>
-						<input type="email" class="form-control" required>
+						<input name="email" type="email" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Address</label>
-						<textarea class="form-control" required></textarea>
+						<input name="adresse" type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Phone</label>
-						<input type="text" class="form-control" required>
+						<input name="phone" type="text" class="form-control" required>
 					</div>					
 				</div>
 				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-info" value="Save">
+					<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+					<input type="submit" class="btn btn-primary"  name="update" value="Save Changes">
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
+<?php
+
+if (isset($_POST['update'])) {
+
+	$username = $_POST['username'];  
+	$email = $_POST['email'];  
+	$phone = $_POST['phone'];  
+	$adresse = $_POST['adresse'];  
+	$id = $_POST['id'];
+		
+	$add = new Contact();
+	$add -> updateContact($username, $email, $phone, $adresse, $id);
+	
+	echo '<script>window.location.href=" contacts.php"</script>';
+
+}
+
+?>
 <!-- Delete Modal HTML -->
 <div id="deleteContactModal" class="modal fade">
 	<div class="modal-dialog">
@@ -217,6 +237,14 @@ $result = $contact->getAllContacts($id_user);
 		</div>
 	</div>
 </div>
+<?php
+
+    // echo 'Hi';
+    $id = $_GET['id'];
+    $contact = new Contact();
+    $contact -> deleteContact($id);
+    header("location: contacts.php");
+?>
 <!-- Footer -->
 <!-- Footer -->
 <script src="js/contacts.js"></script>
