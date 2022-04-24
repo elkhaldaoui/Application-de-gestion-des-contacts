@@ -28,22 +28,11 @@ require_once ('Database.php');
 
         }  
 
-        public function updateContact($username, $email, $phone, $adresse, $id){
-            $sql = "UPDATE contacts SET username = ?, email = ?, phone = ?, adresse = ? WHERE id = '$id';";
-            $res = $this->connect()->prepare($sql);
-            $res->execute([$username, $email, $phone, $adresse]);
-            if (!$res) {
-                echo 'query failed';
-                exit();
-            }
+        public function updateContact($id){
+            static::query("UPDATE contacts SET username = '$this->username', email = '$this->email', phone = '$this->phone', adresse = '$this->adresse' WHERE id = '$id';");
         }
 
         public function deleteContact($id){
-            $sql = "DELETE FROM contacts WHERE id = '$id';";
-            $res = $this->connect()->query($sql);
-            if (!$res) {
-                echo 'query failed';
-                exit();
-            }
+            static::query("DELETE FROM contacts WHERE id = '$id';");
         }   
     }

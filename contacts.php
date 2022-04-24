@@ -68,6 +68,7 @@ require_once 'classes/Contact.php';
 	$contact = new Contact();
 	$result = $contact->getAllContacts($id_user);
 	// print_r($result);
+	$id = $result[0]['id'];
 
 ?>
 			<table class="table table-striped table-hover">
@@ -164,6 +165,12 @@ require_once 'classes/Contact.php';
 
 ?>
 <!-- Edit Modal HTML -->
+<?php
+       $contact = new Contact();
+	   $result = $contact->getContact($id);
+	//    print_r($result);
+
+?>
 <div id="editContactModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -174,20 +181,21 @@ require_once 'classes/Contact.php';
 				</div>
 				<div class="modal-body">					
 					<div class="form-group">
+						<input type="hidden" name="id" value="<?php echo $result[0]['id']?>">
 						<label>User Name</label>
-						<input name="username" type="text" class="form-control" required>
+						<input name="username" type="text" value="<?php echo $result[0]['username']?>" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Email</label>
-						<input name="email" type="email" class="form-control" required>
+						<input name="email" type="email" value="<?php echo $result[0]['email']?>" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Address</label>
-						<input name="adresse" type="text" class="form-control" required>
+						<input name="adresse" type="text" value="<?php echo $result[0]['adresse']?>" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Phone</label>
-						<input name="phone" type="text" class="form-control" required>
+						<input name="phone" type="text" value="<?php echo $result[0]['phone']?>" class="form-control" required>
 					</div>					
 				</div>
 				<div class="modal-footer">
@@ -199,29 +207,33 @@ require_once 'classes/Contact.php';
 	</div>
 </div>
 <?php
-
-if (isset($_POST['update'])) {
-
-	$username = $_POST['username'];  
-	$email = $_POST['email'];  
-	$phone = $_POST['phone'];  
-	$adresse = $_POST['adresse'];  
-	$id = $_POST['id'];
+	if(isset($_POST['update'])){  
+		$username = $_POST['username'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+		$adresse = $_POST['adresse'];
+		$id = $_POST['id'];
+		$contact = new Contact();
+		$contact->username = $username;
+		$contact->email = $email;
+		$contact->phone = $phone;
+		$contact->adresse = $adresse;
 		
-	$add = new Contact();
-	$add -> updateContact($username, $email, $phone, $adresse, $id);
-	
-	echo '<script>window.location.href=" contacts.php"</script>';
-
-}
+		$contact->updateContact($id);
+		echo "
+            <script>
+            window.location.href = 'contacts.php';
+            </script>";
+    }
 
 ?>
 <!-- Delete Modal HTML -->
 <div id="deleteContactModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form>
-				<div class="modal-header">						
+			<form method="POST">
+			<input type="hidden" name="id" value="<?php echo $result[0]['id']?>">				
+			<div class="modal-header">						
 					<h4 class="modal-title">Delete Contact</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
@@ -231,21 +243,23 @@ if (isset($_POST['update'])) {
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Delete">
+					<input type="submit" class="btn btn-danger" name="delete" value="Delete">
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
 <?php
-
-    // echo 'Hi';
-    $id = $_GET['id'];
-    $contact = new Contact();
-    $contact -> deleteContact($id);
-    header("location: contacts.php");
-?>
-<!-- Footer -->
+	if(isset($_POST['delete'])){  
+		$id = $_POST['id'];
+		$contact = new Contact();
+		$contact->deleteContact($id);
+		echo "
+			<script>
+			window.location.href = 'contacts.php';
+			</script>";
+	}
+?><!-- Footer -->
 <!-- Footer -->
 <script src="js/contacts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
