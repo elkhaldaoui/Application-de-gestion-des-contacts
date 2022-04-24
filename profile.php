@@ -1,8 +1,12 @@
 <?php
+
   session_start();
   if (!isset($_SESSION['login'])) {
     header("Location:index.php");
   }
+
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -68,28 +72,29 @@
                 class="img-fluid my-5"
                 style="width: 80px ; border-radius: 50%;"
               />
-              <p>Welcome User</p>
               <h5><?php echo $_SESSION['username'] ?></h5>
+              <p>User</p>
               <a href="#" type="button" class="far fa-edit mb-5" data-bs-toggle="modal" data-bs-target="#myModal"></a>
             </div>
             <div class="col-md-8">
               <div class="card-body p-4">
-                <b style="color:orange;">Information</b>
-                <hr class="mt-0 mb-4">
-                <div class="col-6 mb-3">
-                    <h6>Username</h6>
-                    <p class="text-muted"><?php echo $_SESSION['username'] ?></p>
-                </div>
+                <h6>Information</h6>
                 <hr class="mt-0 mb-4">
                 <div class="row pt-1">
-                  <div class="col-9 mb-4">
+                  <div class="col-6 mb-3">
                     <h6>Email</h6>
                     <p class="text-muted"><?php echo $_SESSION['email'] ?></p>
                   </div>
+                  <div class="col-6 mb-3">
+                    <h6>Phone</h6>
+                    <p class="text-muted">123 456 789</p>
+                  </div>
                 </div>
-                <hr class="mt-0 mb-4">
                 <div class="row pt-1">
-                
+                  <div class="col-6 mb-3">
+                    <h6>Username</h6>
+                    <p class="text-muted"><?php echo $_SESSION['username'] ?></p>
+                  </div>
                   <div class="col-6 mb-3">
                     <h6>Date</h6>
                     <p class="text-muted"><?php echo $_SESSION['registration_date'] ?></p>

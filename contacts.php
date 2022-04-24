@@ -1,8 +1,8 @@
 <?php
-  session_start();
-  if (!isset($_SESSION['login'])) {
-    header("Location:index.php");
-  }
+session_start();
+
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -129,7 +129,25 @@
 		</div>
 	</div>
 </div>
+<?php
+	if(isset($_POST['add'])){  
+		require_once 'classes/Contact.php';
+		$username = $_POST['username'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+		$adresse = $_POST['adresse'];
+		$id_user = $_SESSION['user_id'];
+		$contact = new Contact();
+		$contact->username = $username;
+		$contact->email = $email;
+		$contact->phone = $phone;
+		$contact->adresse = $adresse;
+		$contact->id_user = $id_user;
+		$contact->addContact();
 
+    }
+
+?>
 <!-- Edit Modal HTML -->
 <div id="editContactModal" class="modal fade">
 	<div class="modal-dialog">
@@ -142,15 +160,15 @@
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>Name</label>
-						<input type="text" value="<?php echo $_SESSION['username'] ?>" class="form-control" required>
+						<input type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Email</label>
-						<input type="email" value="<?php echo $_SESSION['email'] ?>" class="form-control" required>
+						<input type="email" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Address</label>
-						<text type="text" value="<?php echo $_SESSION['adresse'] ?>" class="form-control" required></text>
+						<textarea class="form-control" required></textarea>
 					</div>
 					<div class="form-group">
 						<label>Phone</label>

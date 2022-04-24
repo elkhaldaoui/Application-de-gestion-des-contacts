@@ -6,14 +6,13 @@ require_once ('Database.php');
         public $email;
         public $adresse;
         public $phone;
-        public $id_user;
 
         function __construct() {    
         }
         
         public function addContact(){
-            static::query("INSERT INTO contacts(username, email, adresse, phone, id_user)".
-            " VALUES('$this->username','$this->email','$this->adresse','$this->phone' ,'$this->id_user')");
+            static::query("INSERT INTO contacts(username, email, adresse, phone , id_user)".
+            " VALUES('$this->username','$this->email','$this->adresse','$this->phone','$this->id_user')");
         }
 
         public function getContact($id){
@@ -35,9 +34,5 @@ require_once ('Database.php');
 
         public function deleteContact($id){
             static::query("DELETE FROM contacts WHERE id = '$id'");
-        }
-
-        public function SetId($id){
-           $this->id_user = $id;
         }
     }
