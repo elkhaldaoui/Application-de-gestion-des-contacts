@@ -154,7 +154,10 @@ $result = $contact->getAllContacts($id_user);
 		$contact->adresse = $adresse;
 		$contact->id_user = $id_user;
 		$contact->addContact();
-
+		echo "
+            <script>
+            window.location.href = 'contacts.php';
+            </script>";
     }
 
 ?>
