@@ -1,8 +1,6 @@
 <?php
 session_start();
-
-
-
+require_once 'classes/Contact.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -64,6 +62,13 @@ session_start();
 					</div>
 				</div>
 			</div>
+<?php
+$id_user = $_SESSION['user_id'];
+$contact = new Contact();
+$result = $contact->getAllContacts($id_user);
+// print_r($result);
+
+?>
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
@@ -76,20 +81,26 @@ session_start();
 						<th>Actions</th>
 					</tr>
 				</thead>
+				<?php
+				foreach ($result as $name ){
+				?>
 				<tbody>
 					<tr>
 						<td>
 						</td>
-						<td>Thomas Hardy</td>
-						<td>thomashardy@mail.com</td>
-						<td>89 Chiaroscuro Rd, Portland, USA</td>
-						<td>(171) 555-2222</td>
+						<td><?php echo $name['username']?></td>
+						<td><?php echo $name['email']?></td>
+						<td><?php echo $name['phone']?></td>
+						<td><?php echo $name['adresse']?></td>
 						<td>
 							<a href="#editContactModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 							<a href="#deleteContactModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 						</td>
 					</tr>
 				</tbody>
+				<?php
+				}
+				?>
 			</table>
 		</div>
 	</div>        
@@ -131,7 +142,6 @@ session_start();
 </div>
 <?php
 	if(isset($_POST['add'])){  
-		require_once 'classes/Contact.php';
 		$username = $_POST['username'];
         $email = $_POST['email'];
         $phone = $_POST['phone'];

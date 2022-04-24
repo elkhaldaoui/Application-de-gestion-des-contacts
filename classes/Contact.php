@@ -21,8 +21,8 @@ require_once ('Database.php');
             return $res;
         }
 
-        public function getAllContacts(){
-            $sql = "SELECT * FROM contacts";
+        public function getAllContacts($id_user){
+            $sql = "SELECT * FROM contacts WHERE id_user = '$id_user'";
             $res = static::query($sql);
             return $res;
 
