@@ -47,18 +47,17 @@
 	            </div>
 	          </form>
 
-			  <?php
-					if (isset($_GET["error"])) {
+<?php
+	if (isset($_GET["error"])) {
 
-						if ($_GET["error"] == "emptyInputs") {
-						echo '<div class="alert alert-danger text-center">Fill all the fields</div>';
-						}
-						else if ($_GET["error"] == "UserNotFound") {
-						echo '<div class="alert alert-danger text-center">User Not Found</div>';
-						}
-					}
-        		?>
-
+		if ($_GET["error"] == "emptyInputs") {
+		echo '<div class="alert alert-danger text-center">Fill all the fields</div>';
+		}
+		else if ($_GET["error"] == "UserNotFound") {
+		echo '<div class="alert alert-danger text-center">User Not Found</div>';
+		}
+	}
+?>
 	          <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
 	          <div class="social d-flex text-center">
 	          	<a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
@@ -69,7 +68,7 @@
 			</div>
 		</div>
 	</section>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
@@ -82,6 +81,5 @@
 		User::login($email, $password);
 		header("Location: profile.php");
     }
-
 ?>
 

@@ -1,7 +1,9 @@
 <?php
-session_start();
+  session_start();
+  if (!isset($_SESSION['login'])) {
+    header("Location:index.php");
+  }
 require_once 'classes/Contact.php';
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -96,10 +98,11 @@ require_once 'classes/Contact.php';
 						<td><?php echo $name['adresse']?></td>
 						<td>
 							<a href="includes/edit.php?id=<?php  echo $name['id'] ?>" class="edit"><i class="material-icons">&#xE254;</i></a>
-							<a href="includes/delete.php?id=<?php  echo $name['id'] ?>" class="delete"><i class="material-icons">&#xE872;</i></a>
+							<a href="includes/delete.php?id=<?php  echo $name['id'] ?>"  class="delete"><i class="material-icons">&#xE872;</i></a>
 						</td>
 					</tr>
 				</tbody>
+
 <?php
 	}
 ?>
@@ -142,6 +145,7 @@ require_once 'classes/Contact.php';
 		</div>
 	</div>
 </div>
+
 <?php
 	if(isset($_POST['add'])){  
 		$username = $_POST['username'];

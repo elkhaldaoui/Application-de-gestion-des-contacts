@@ -1,13 +1,10 @@
 <?php
-
   session_start();
   if (!isset($_SESSION['login'])) {
     header("Location:index.php");
   }
-
-
-
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,6 +16,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <title>PROFILE</title>
 </head>
+
 <style>
 .gradient-custom {
   /* fallback for old browsers */
@@ -31,7 +29,9 @@
   background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
 }
 </style>
+
 <body class="img js-fullheight" style="background-image: url(images/bg.jpg);">
+
 <!------navbar------->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -58,6 +58,8 @@
     </div>
   </div>
 </nav>
+<!------navbar------->
+
 <!------content------->
 <section class="vh-100 m-4">
   <div class="container py-5 h-100">
@@ -73,8 +75,8 @@
                 style="width: 80px ; border-radius: 50%;"
               />
               <h5><?php echo $_SESSION['username'] ?></h5>
-              <p>User</p>
-              <a href="#" type="button" class="far fa-edit mb-5" data-bs-toggle="modal" data-bs-target="#myModal"></a>
+                <p>User</p>
+                  <a href="#" type="button" class="far fa-edit mb-5" data-bs-toggle="modal" data-bs-target="#myModal"></a>
             </div>
             <div class="col-md-8">
               <div class="card-body p-4">
@@ -117,6 +119,8 @@
     </div>
   </div>
 </section>
+<<!-- end content -->
+
 <!-- Footer -->
 <!-- Footer -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
