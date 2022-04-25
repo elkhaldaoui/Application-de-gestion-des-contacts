@@ -3,8 +3,9 @@
   if (!isset($_SESSION['login'])) {
     header("Location:index.php");
   }
-require_once 'classes/Contact.php';
+  require_once 'classes/Contact.php';
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
