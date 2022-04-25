@@ -42,6 +42,20 @@
 	            	<button type="submit" name="register" class="form-control btn btn-primary submit px-3">Register Account</button>
 	            </div>
 	            </form>
+				<?php
+					if (isset($_GET["error"])) {
+
+						if ($_GET["error"] == "emptyInputs") {
+						echo '<div class="alert alert-danger text-center">Fill all the fields</div>';
+						}
+						else if ($_GET["error"] == "invalidEmail") {
+						echo '<div class="alert alert-danger text-center">Invalid email format</div>';
+						}
+						else if ($_GET["error"] == "emailAlreadyExist") {
+						echo '<div class="alert alert-danger text-center">This email is already exist</div>';
+						}
+					}
+        		?>
 		        </div>
 				</div>
 			</div>

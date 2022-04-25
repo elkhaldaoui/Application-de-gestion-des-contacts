@@ -47,6 +47,18 @@
 	            </div>
 	          </form>
 
+			  <?php
+					if (isset($_GET["error"])) {
+
+						if ($_GET["error"] == "emptyInputs") {
+						echo '<div class="alert alert-danger text-center">Fill all the fields</div>';
+						}
+						else if ($_GET["error"] == "UserNotFound") {
+						echo '<div class="alert alert-danger text-center">User Not Found</div>';
+						}
+					}
+        		?>
+
 	          <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
 	          <div class="social d-flex text-center">
 	          	<a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>

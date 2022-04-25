@@ -68,7 +68,6 @@ require_once 'classes/Contact.php';
 	$contact = new Contact();
 	$result = $contact->getAllContacts($id_user);
 	// print_r($result);
-	$id = $result[0]['id'];
 
 ?>
 			<table class="table table-striped table-hover">
@@ -96,8 +95,8 @@ require_once 'classes/Contact.php';
 						<td><?php echo $name['phone']?></td>
 						<td><?php echo $name['adresse']?></td>
 						<td>
-							<a href="#editContactModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteContactModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+							<a href="includes/edit.php?id=<?php  echo $name['id'] ?>" class="edit"><i class="material-icons">&#xE254;</i></a>
+							<a href="includes/delete.php?id=<?php  echo $name['id'] ?>" class="delete"><i class="material-icons">&#xE872;</i></a>
 						</td>
 					</tr>
 				</tbody>
@@ -164,102 +163,7 @@ require_once 'classes/Contact.php';
     }
 
 ?>
-<!-- Edit Modal HTML -->
-<?php
-       $contact = new Contact();
-	   $result = $contact->getContact($id);
-	//    print_r($result);
-
-?>
-<div id="editContactModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form method='POST'>
-				<div class="modal-header">						
-					<h4 class="modal-title">Edit Contact</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">					
-					<div class="form-group">
-						<input type="hidden" name="id" value="<?php echo $result[0]['id']?>">
-						<label>User Name</label>
-						<input name="username" type="text" value="<?php echo $result[0]['username']?>" class="form-control" required>
-					</div>
-					<div class="form-group">
-						<label>Email</label>
-						<input name="email" type="email" value="<?php echo $result[0]['email']?>" class="form-control" required>
-					</div>
-					<div class="form-group">
-						<label>Address</label>
-						<input name="adresse" type="text" value="<?php echo $result[0]['adresse']?>" class="form-control" required>
-					</div>
-					<div class="form-group">
-						<label>Phone</label>
-						<input name="phone" type="text" value="<?php echo $result[0]['phone']?>" class="form-control" required>
-					</div>					
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-primary"  name="update" value="Save Changes">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-<?php
-	if(isset($_POST['update'])){  
-		$username = $_POST['username'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-		$adresse = $_POST['adresse'];
-		$id = $_POST['id'];
-		$contact = new Contact();
-		$contact->username = $username;
-		$contact->email = $email;
-		$contact->phone = $phone;
-		$contact->adresse = $adresse;
-		
-		$contact->updateContact($id);
-		echo "
-            <script>
-            window.location.href = 'contacts.php';
-            </script>";
-    }
-
-?>
-<!-- Delete Modal HTML -->
-<div id="deleteContactModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form method="POST">
-			<input type="hidden" name="id" value="<?php echo $result[0]['id']?>">				
-			<div class="modal-header">						
-					<h4 class="modal-title">Delete Contact</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">					
-					<p>Are you sure you want to delete these Records?</p>
-					<p class="text-warning"><small>This action cannot be undone.</small></p>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" name="delete" value="Delete">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-<?php
-	if(isset($_POST['delete'])){  
-		$id = $_POST['id'];
-		$contact = new Contact();
-		$contact->deleteContact($id);
-		echo "
-			<script>
-			window.location.href = 'contacts.php';
-			</script>";
-	}
-?><!-- Footer -->
+<!-- Footer -->
 <!-- Footer -->
 <script src="js/contacts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

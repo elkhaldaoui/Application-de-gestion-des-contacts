@@ -9,11 +9,39 @@ require_once ('Database.php');
         public $registration_date;
         
         public function register(){
+            if(empty($this->username) || empty($this->email) || empty($this->password)) {
+                header("location: ./register.php?error=emptyInputs");
+                exit();
+            }
+
+            if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+               header("location: ./register.php?error=invalidEmail");
+                exit();
+            }
+    
+            if($this->checkUser($this->email) == true){
+                header("location: ./register.php?error=emailAlreadyExist");
+                exit();
+            }
             static::query("INSERT INTO users(username,email,password,registration_date)".
             " VALUES('$this->username','$this->email','$this->password','$this->registration_date')");
         }
 
+        public function checkUser($email){
+            $res = static::query("SELECT * FROM users WHERE email = '$this->email';");
+            if(count($res) > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
         public static function login($emaillg, $passwordlg){
+            if(empty($emaillg) || empty($passwordlg)) {
+                header("location: ./index.php?error=emptyInputs");
+                exit();
+            }
             $sql = "SELECT * FROM users WHERE email = '$emaillg' AND password = '".md5($passwordlg)."'";
             $res = static::query($sql);
             if($res){
@@ -27,7 +55,8 @@ require_once ('Database.php');
                 $_SESSION['registration_date'] = $res[0]['registration_date'];
                 
             }else{
-                echo "Wrong email or password"; 
+                header("location: ./index.php?error=UserNotFound");
+                exit();
             }
         }
 
