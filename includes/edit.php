@@ -11,9 +11,7 @@ require_once '../classes/Contact.php';
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/webfonts/fa-brands-400.ttf">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -56,6 +54,7 @@ require_once '../classes/Contact.php';
 </nav>
 <!------content------->
 <?php
+
 		$contact = new Contact();
 		$id = $_GET['id'];
 		$result = $contact->getContact($id);
@@ -63,33 +62,40 @@ require_once '../classes/Contact.php';
 
 ?>
 <div class="w-100" style="margin-top:200px;">
-    <form class="w-25 mx-auto" method="post" id="editeForm">
-    <input type="hidden" name="id" value="<?php echo $result[0]['id']?>">
-    <div class="form-outline mb-4">
-        <label class="form-label" for="form1Example1">User Name</label>
-        <input name="username" id="userName" type="text" value="<?php echo $result[0]['username']?>" class="form-control" />
-    </div>
-    <div class="form-outline mb-4">
-        <label class="form-label" for="form1Example2">Email</label>
-        <input name="email" id="email" type="email" value="<?php echo $result[0]['email']?>" class="form-control" />
-    </div>
-    <div class="form-outline mb-4">
-        <label class="form-label" for="form1Example2">Address</label>
-        <input name="adresse" id="adresse" type="text" value="<?php echo $result[0]['adresse']?>" class="form-control" />
-    </div>
-    <div class="form-outline mb-4">
-        <label class="form-label" for="form1Example2">Phone</label>
-        <input name="phone" id="phone" type="text" value="<?php echo $result[0]['phone']?>" class="form-control" />
-    </div>
 
-    <button type="submit" name="update" class="btn btn-primary btn-block">Update</button>
+    <form class="w-25 mx-auto" method="post" id="editeForm">
+      <input type="hidden" name="id" value="<?php echo $result[0]['id']?>">
+      <div class="form-outline mb-4">
+          <label class="form-label" for="form1Example1">User Name</label>
+          <input type="text" name="username" id="userName" value="<?php echo $result[0]['username']?>" class="form-control" />
+          <div id="userNameErrors"></div>
+      </div>
+      <div class="form-outline mb-4">
+          <label class="form-label" for="form1Example2">Email</label>
+          <input type="email" name="email" id="email" value="<?php echo $result[0]['email']?>" class="form-control" />
+          <div id="emailErrors"></div>
+      </div>
+      <div class="form-outline mb-4">
+          <label class="form-label" for="form1Example2">Address</label>
+          <input type="text" name="adresse" id="adresse" value="<?php echo $result[0]['adresse']?>" class="form-control" />
+          <div id="adresseErrors"></div>
+      </div>
+      <div class="form-outline mb-4">
+          <label class="form-label" for="form1Example2">Phone</label>
+          <input type="text" name="phone" id="phone" value="<?php echo $result[0]['phone']?>" class="form-control" />
+          <div id="phoneErrors"></div>
+      </div>
+
+      <button type="submit" name="update" class="btn btn-primary btn-block">Update</button>
     </form>
+
 </div>
+
 <?php
 	if(isset($_POST['update'])){  
 		$username = $_POST['username'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
 		$adresse = $_POST['adresse'];
 		$id = $_POST['id'];
 		$contact = new Contact();
@@ -106,6 +112,6 @@ require_once '../classes/Contact.php';
     }
 
 ?>
-<script src="js/edite.js"></script>
+<script src="../js/edite.js"></script>
 </body>
 </html>

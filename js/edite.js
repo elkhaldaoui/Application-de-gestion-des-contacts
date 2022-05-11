@@ -14,7 +14,7 @@ form.addEventListener('submit', e => {
     let errors = 0
     let pattern = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-zA-Z0-9]{2,})+$/
     if(userName.value == ''){
-       userNameErrors.textContent = 'UserName can not be empty'
+       userNameErrors.textContent = 'User Name can not be blank'
        errors++
     }
     if(email.value == ''){
@@ -34,7 +34,7 @@ form.addEventListener('submit', e => {
         errors++
     }
     if(phoneLenght.length < 10){
-        phoneErrors.textContent = 'phone nubmber must be at least 10 digits'
+        phoneErrors.textContent = 'phone number must be at least 10 digits'
         errors++
     }
     if(errors > 0) {
