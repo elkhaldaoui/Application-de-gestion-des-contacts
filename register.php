@@ -11,7 +11,9 @@
 	<link rel="stylesheet" href="css/style.css">
 	<title>Sign Up</title>
 </head>
-<body class="img js-fullheight" style="background-image: url(images/bg.jpg);">
+<body  class="bg-image" 
+       style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
+              height: 100vh">
 <!------content------->
 	<section class="ftco-section">
 		<div class="container">

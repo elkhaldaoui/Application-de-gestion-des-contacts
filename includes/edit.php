@@ -25,7 +25,36 @@ require_once '../classes/Contact.php';
   <link rel="stylesheet" href="css/contacts.css">
   <title> EDITE CONTACTS</title>
 </head>
-<body >
+<body  class="bg-image" 
+     style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
+            height: 100vh">
+<!------navbar------->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CONTACTS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="../profile.php">PROFILE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Contacts.php">CONTACTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../logout.php">Log-Out</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<!------content------->
 <?php
 		$contact = new Contact();
 		$id = $_GET['id'];
@@ -34,23 +63,23 @@ require_once '../classes/Contact.php';
 
 ?>
 <div class="w-100" style="margin-top:200px;">
-    <form class="w-25 mx-auto" method="post">
+    <form class="w-25 mx-auto" method="post" id="editeForm">
     <input type="hidden" name="id" value="<?php echo $result[0]['id']?>">
     <div class="form-outline mb-4">
         <label class="form-label" for="form1Example1">User Name</label>
-        <input name="username" type="text" value="<?php echo $result[0]['username']?>" class="form-control" />
+        <input name="username" id="userName" type="text" value="<?php echo $result[0]['username']?>" class="form-control" />
     </div>
     <div class="form-outline mb-4">
         <label class="form-label" for="form1Example2">Email</label>
-        <input name="email" type="email" value="<?php echo $result[0]['email']?>" class="form-control" />
+        <input name="email" id="email" type="email" value="<?php echo $result[0]['email']?>" class="form-control" />
     </div>
     <div class="form-outline mb-4">
         <label class="form-label" for="form1Example2">Address</label>
-        <input name="adresse" type="text" value="<?php echo $result[0]['adresse']?>" class="form-control" />
+        <input name="adresse" id="adresse" type="text" value="<?php echo $result[0]['adresse']?>" class="form-control" />
     </div>
     <div class="form-outline mb-4">
         <label class="form-label" for="form1Example2">Phone</label>
-        <input name="phone" type="text" value="<?php echo $result[0]['phone']?>" class="form-control" />
+        <input name="phone" id="phone" type="text" value="<?php echo $result[0]['phone']?>" class="form-control" />
     </div>
 
     <button type="submit" name="update" class="btn btn-primary btn-block">Update</button>
@@ -77,5 +106,6 @@ require_once '../classes/Contact.php';
     }
 
 ?>
+<script src="js/edite.js"></script>
 </body>
 </html>

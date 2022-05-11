@@ -11,9 +11,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/webfonts/fa-brands-400.ttf">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -99,7 +97,7 @@
 						<td><?php echo $name['adresse']?></td>
 						<td>
 							<a href="includes/edit.php?id=<?php  echo $name['id'] ?>" class="edit"><i class="material-icons">&#xE254;</i></a>
-							<a href="includes/delete.php?id=<?php  echo $name['id'] ?>"  class="delete"><i class="material-icons">&#xE872;</i></a>
+							<a onclick="return confirm('ARE YOU SUR ?')" href="includes/delete.php?id=<?php  echo $name['id'] ?>"  class="delete"><i class="material-icons">&#xE872;</i></a>
 						</td>
 					</tr>
 				</tbody>
@@ -115,7 +113,7 @@
 <div id="addContactModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form method='POST'>
+			<form method='POST' id="addForm">
 				<div class="modal-header">						
 					<h4 class="modal-title">Add Contact</h4>
 					<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
@@ -123,19 +121,23 @@
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>Name</label>
-						<input type="text" name="username" class="form-control" required>
+						<input type="text" name="username" id="userName" class="form-control">
+						<div id="userNameErrors"></div>
 					</div>
 					<div class="form-group">
 						<label>Email</label>
-						<input type="email" name="email" class="form-control" required>
+						<input type="email" name="email" id="email" class="form-control">
+						<div id="emailErrors"></div>
 					</div>
 					<div class="form-group">
 						<label>Address</label>
-						<textarea class="form-control" name="adresse" required></textarea>
+						<input type="text" class="form-control" name="adresse" id="adresse">
+						<div id="adresseErrors"></div>
 					</div>
 					<div class="form-group">
 						<label>Phone</label>
-						<input type="text" name="phone" class="form-control" required>
+						<input type="text" name="phone" id="phone" class="form-control">
+						<div id="phoneErrors"></div>
 					</div>					
 				</div>
 				<div class="modal-footer">
@@ -170,7 +172,7 @@
 ?>
 <!-- Footer -->
 <!-- Footer -->
-<script src="js/contacts.js"></script>
+<script src="js/add.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

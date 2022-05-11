@@ -8,7 +8,9 @@
 	<link rel="stylesheet" href="css/style.css">
 	<title>Sign In</title>
 </head>
-<body class="img js-fullheight" style="background-image: url(images/bg.jpg);">
+<body  class="bg-image" 
+       style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
+              height: 100vh">
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -21,7 +23,7 @@
 					<div class="login-wrap p-0">
 		      	<h3 class="mb-4 text-center">Have an account?</h3>
 
-		      	<form action="#" class="signin-form" method="POST" >
+		      	<form name="myForm" action="#" class="signin-form" method="POST">
 		      		<div class="form-group">
 		      			<input type="text" name="email" class="form-control" placeholder="Email" required>
 		      		</div>
@@ -45,7 +47,7 @@
 									<a href="#" style="color: #fff">Forgot Password</a>
 								</div>
 	            </div>
-	          </form>
+	            </form>
 
 <?php
 	if (isset($_GET["error"])) {
@@ -68,6 +70,7 @@
 			</div>
 		</div>
 	</section>
+<script src="js/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
