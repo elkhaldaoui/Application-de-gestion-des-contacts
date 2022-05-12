@@ -18,15 +18,15 @@ form.addEventListener('submit', e => {
        errors++
     }
     if(email.value == ''){
-        emailErrors.textContent = 'Email is required'
+        emailErrors.textContent = 'Email can not be blank'
         errors++
     }
     if(phone.value == ''){
-        phoneErrors.textContent = 'Phone number is required'
+        phoneErrors.textContent = 'Phone number can not be blank'
         errors++
     }
     if(adresse.value == ''){
-        adresseErrors.textContent = 'Adresse is required'
+        adresseErrors.textContent = 'Adresse can not be blank'
         errors++
     }
     if(!email.value.match(pattern)){
@@ -34,7 +34,7 @@ form.addEventListener('submit', e => {
         errors++
     }
     if(phoneLenght.length < 10){
-        phoneErrors.textContent = 'phone number must be at least 10 digits'
+        phoneErrors.textContent = 'Phone number must be at least 10 digits'
         errors++
     }
     if(errors > 0) {

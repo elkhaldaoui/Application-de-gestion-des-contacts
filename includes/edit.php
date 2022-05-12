@@ -68,22 +68,22 @@ require_once '../classes/Contact.php';
       <div class="form-outline mb-4">
           <label class="form-label" for="form1Example1">User Name</label>
           <input type="text" name="username" id="userName" value="<?php echo $result[0]['username']?>" class="form-control" />
-          <div id="userNameErrors"></div>
+          <div id="userNameErrors" class=" bg-danger text-white"></div>
       </div>
       <div class="form-outline mb-4">
           <label class="form-label" for="form1Example2">Email</label>
           <input type="email" name="email" id="email" value="<?php echo $result[0]['email']?>" class="form-control" />
-          <div id="emailErrors"></div>
+          <div id="emailErrors" class=" bg-danger text-white"></div>
       </div>
       <div class="form-outline mb-4">
           <label class="form-label" for="form1Example2">Address</label>
           <input type="text" name="adresse" id="adresse" value="<?php echo $result[0]['adresse']?>" class="form-control" />
-          <div id="adresseErrors"></div>
+          <div id="adresseErrors" class=" bg-danger text-white"></div>
       </div>
       <div class="form-outline mb-4">
           <label class="form-label" for="form1Example2">Phone</label>
           <input type="text" name="phone" id="phone" value="<?php echo $result[0]['phone']?>" class="form-control" />
-          <div id="phoneErrors"></div>
+          <div id="phoneErrors" class=" bg-danger text-white"></div>
       </div>
 
       <button type="submit" name="update" class="btn btn-primary btn-block">Update</button>
